@@ -15,8 +15,8 @@ public class ExceptionLoggingData {
     }
 
     public static void main(String[] args){
-        int exceptionNum = Integer.valueOf(args[0]);
         Logger logger = Logger.getAnonymousLogger();
+        int exceptionNum = Integer.parseInt(args[0]);
 
         switch (exceptionNum){
             case 1:
