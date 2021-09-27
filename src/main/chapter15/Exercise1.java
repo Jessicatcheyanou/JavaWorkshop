@@ -3,6 +3,7 @@ package main.chapter15;
 /*To calculate price of articles in a Shopping Cart*/
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 public class Exercise1 {
@@ -11,9 +12,11 @@ public class Exercise1 {
         final String name;
         final  double price;
 
+
         public ShoppingArticle(String name, double price) {
             this.name = name;
             this.price = price;
+
         }
     }
     private static final class ShoppingCart{
@@ -36,6 +39,19 @@ public class Exercise1 {
                 /*Finally reduce the prices f all ShoppingArticles to a sum,using the sum() method that is available in DoubleStream()*/
                           .sum();
 
+    }
+
+    /*Implement a new function that will apply discounts on some items before calculating the total price*/
+    private static double calculatePriceWithDiscounts(Map<String,Double> discounts,ShoppingCart... carts){
+        return Stream.of(carts)
+                .flatMap((cart) -> {return cart.myArticles.stream();})
+                .mapToDouble((item) -> {
+                    if (discounts.containsKey(item.name)){
+                        return item.price - item.price*discounts.get(item.name);
+                    }
+                    return item.price;
+                })
+                .sum();
     }
 
     public static void main(String[] args) {
@@ -66,5 +82,8 @@ public class Exercise1 {
         double sum = calculatePrice(fruitCart,mewtAndFishCart,sweetsCart,dressCart);
         System.out.println(String.format("Sum: %.2f", sum));
 
+        Map<String,Double> discounts = Map.of("bar",0.12,"jako",0.5);
+        double sumWithDiscount = calculatePriceWithDiscounts(discounts,fruitCart,dressCart,mewtAndFishCart,sweetsCart);
+        System.out.println(String.format("Discounted Sum:%.2f", sumWithDiscount));
     }
 }
