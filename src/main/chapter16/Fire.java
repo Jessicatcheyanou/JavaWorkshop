@@ -1,12 +1,15 @@
 package main.chapter16;
 
-public class Gateway implements Sensor{
+public class Fire implements Sensor {
+
     private int batteryHealth;
     private boolean triggered;
+    private int temperature;
 
-    public Gateway(int batteryHealth, boolean triggered) {
+    public Fire(int batteryHealth, boolean triggered, int temperature) {
         this.batteryHealth = batteryHealth;
         this.triggered = triggered;
+        this.temperature = temperature;
     }
 
     @Override
@@ -25,7 +28,10 @@ public class Gateway implements Sensor{
     }
     @Override
     public void triggered(boolean state){
-        triggered = state;
+
     }
 
+    public int temperature(){
+        return temperature;
+    }
 }

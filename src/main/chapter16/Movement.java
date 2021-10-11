@@ -1,12 +1,14 @@
 package main.chapter16;
 
-public class Gateway implements Sensor{
+public class Movement implements Sensor{
     private int batteryHealth;
-    private boolean triggered;
+    private boolean isTriggered;
+    private int ambientLight;
 
-    public Gateway(int batteryHealth, boolean triggered) {
+    public Movement(int batteryHealth, boolean isTriggered, int ambientLight) {
         this.batteryHealth = batteryHealth;
-        this.triggered = triggered;
+        this.isTriggered = isTriggered;
+        this.ambientLight = ambientLight;
     }
 
     @Override
@@ -21,11 +23,14 @@ public class Gateway implements Sensor{
 
     @Override
     public boolean triggered(){
-        return triggered;
+        return isTriggered;
     }
     @Override
     public void triggered(boolean state){
-        triggered = state;
+
     }
 
+    public int ambientLight(){
+        return ambientLight;
+    }
 }
