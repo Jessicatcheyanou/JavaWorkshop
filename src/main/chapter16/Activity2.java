@@ -1,12 +1,9 @@
 package main.chapter16;
-/*Extracting Data-Extract all of the alarm system data as integers
-* :battery percentages,temperatures,triggered status,and others,depending on how far
-* you've taken your alarm systrm*/
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Exercise3 {
+public class Activity2 {
     public static void main(String[] args) {
         List<Sensor> sensors = new ArrayList<>();
         sensors.add(new Gateway(34,false));
@@ -20,16 +17,20 @@ public class Exercise3 {
         sensors.add(new Gateway(9,false));
         sensors.add(new Movement(76,false,41));
 
-      ExtractBatteryHealth extractBatteryHealth = new ExtractBatteryHealth();
+        ExtractBatteryHealth extractBatteryHealth = new ExtractBatteryHealth();
 
       /*Use the java streams map operation and apply your new instance of ExtractBatteryHealth.Terminate the stream with a toArray
       operation
        */
-      Integer[] batteryHealths = sensors.stream().map(extractBatteryHealth).toArray(Integer[]::new);
-       /*Print your battery health to the terminal*/
+        Integer[] batteryHealths = sensors.stream().map(extractBatteryHealth).toArray(Integer[]::new);
+        /*Print your battery health to the terminal*/
+        int sum = 0;
+        int avg = 0;
         for (int i=0;i<batteryHealths.length;i++){
-            System.out.println((batteryHealths[i]));
+            sum = sum + batteryHealths[i];
         }
-
+        avg = sum / batteryHealths.length;
+        System.out.println("Sum of Battery health is:"+sum);
+        System.out.println("Average sum of Battery health is:" + avg );
     }
 }
