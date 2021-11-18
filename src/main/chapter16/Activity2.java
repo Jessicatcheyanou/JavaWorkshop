@@ -27,10 +27,11 @@ public class Activity2 {
         int sum = 0;
         int avg = 0;
         for (int i=0;i<batteryHealths.length;i++){
-            sum = sum + batteryHealths[i];
+           sum = sum + batteryHealths[i];
         }
         avg = sum / batteryHealths.length;
         System.out.println("Sum of Battery health is:"+sum);
         System.out.println("Average sum of Battery health is:" + avg );
+
     }
 }
