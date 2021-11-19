@@ -2,6 +2,7 @@ package main.chapter16;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Activity2 {
     public static void main(String[] args) {
@@ -23,6 +24,10 @@ public class Activity2 {
       operation
        */
         Integer[] batteryHealths = sensors.stream().map(extractBatteryHealth).toArray(Integer[]::new);
+
+        /*Using the Streams API,Calculate average battery Health*/
+        Stream.of(batteryHealths).mapToInt(i -> i).average().ifPresent(avg -> System.out.println("Using the Streams API,The average Battery Health is :"+avg));
+
         /*Print your battery health to the terminal*/
         int sum = 0;
         int avg = 0;
@@ -30,8 +35,8 @@ public class Activity2 {
            sum = sum + batteryHealths[i];
         }
         avg = sum / batteryHealths.length;
-        System.out.println("Sum of Battery health is:"+sum);
-        System.out.println("Average sum of Battery health is:" + avg );
+        System.out.println("Using the for loop,Sum of Battery health is:"+sum);
+        System.out.println("Using the for loop,Average sum of Battery health is:" + avg );
 
     }
 }
