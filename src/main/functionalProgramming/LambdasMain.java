@@ -31,5 +31,6 @@ public final class LambdasMain {
 
         BinaryOperator<Integer> add = Integer::sum;
         System.out.println(add.apply(4,6));
+
     }
 }
