@@ -22,8 +22,6 @@ public final class LambdasMain {
      */
     BinaryOperator<Integer> add = Integer::sum;
 
-
-
     public static void main(String[] args) {
         List<String> input = List.of("hello","\t  ","world","","","\t"," ","\t"," ","goodbye", " ");
         long numberOfWhiteSpaceStrings = countMatchingStrings(input,s -> s.trim().isEmpty());
@@ -31,6 +29,9 @@ public final class LambdasMain {
 
         BinaryOperator<Integer> add = Integer::sum;
         System.out.println(add.apply(4,6));
+
+        BinaryOperation add2 = (a,b) -> a + b;
+        System.out.println( add2.apply(2,3));
 
     }
 }
