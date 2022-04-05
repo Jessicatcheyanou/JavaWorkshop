@@ -24,7 +24,7 @@ public final class LambdasMain {
 
     public static void main(String[] args) {
         List<String> input = List.of("hello","\t  ","world","","","\t"," ","\t"," ","goodbye", " ");
-        long numberOfWhiteSpaceStrings = countMatchingStrings(input,s -> s.trim().isEmpty());
+        long numberOfWhiteSpaceStrings = countMatchingStrings(input,String::isBlank);
         System.out.println(numberOfWhiteSpaceStrings + " " + "whitespace strings");
 
         BinaryOperator<Integer> add = Integer::sum;
